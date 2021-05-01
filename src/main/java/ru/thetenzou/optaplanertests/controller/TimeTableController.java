@@ -1,5 +1,6 @@
 package ru.thetenzou.optaplanertests.controller;
 
+import org.optaplanner.core.api.solver.SolverManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ public class TimeTableController {
 
     @Autowired
     private TimeTableRepository timeTableRepository;
+    @Autowired
+    private SolverManager<TimeTable, Long> solverManager;
 
     @GetMapping
     public TimeTable getTimeTable() {
@@ -23,7 +26,11 @@ public class TimeTableController {
 
     @PostMapping("/solve")
     public void solve() {
-        throw new UnsupportedOperationException();
+        solverManager.solveAndListen(
+                1L,
+                (problemId) -> timeTableRepository.findById(problemId),
+                timeTableRepository::save
+        );
     }
 
 
