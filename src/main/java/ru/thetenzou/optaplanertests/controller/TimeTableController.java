@@ -1,5 +1,6 @@
 package ru.thetenzou.optaplanertests.controller;
 
+import org.optaplanner.core.api.score.ScoreManager;
 import org.optaplanner.core.api.solver.SolverManager;
 import org.optaplanner.core.api.solver.SolverStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.thetenzou.optaplanertests.model.TimeTable;
 import ru.thetenzou.optaplanertests.repository.TimeTableRepository;
-import ru.thetenzou.optaplanertests.repository.TimeslotRepository;
 
 @RestController
 @RequestMapping("/timeTable")
@@ -19,10 +19,16 @@ public class TimeTableController {
     private TimeTableRepository timeTableRepository;
     @Autowired
     private SolverManager<TimeTable, Long> solverManager;
+    @Autowired
+    private ScoreManager<TimeTable> scoreManager;
 
     @GetMapping
     public TimeTable getTimeTable() {
-        return timeTableRepository.findById(1L);
+        SolverStatus solverStatus = getSolverStatus();
+        TimeTable solution = timeTableRepository.findById(TimeTableRepository.SINGLETON_TIME_TABLE_ID);
+        scoreManager.updateScore(solution);
+        solution.setSolverStatus(solverStatus);
+        return solution;
     }
 
     @PostMapping("/solve")
