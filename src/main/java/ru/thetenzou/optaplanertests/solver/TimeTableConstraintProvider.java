@@ -63,16 +63,16 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
     private Constraint teacherRoomStability(ConstraintFactory constraintFactory) {
-        // A teacher prefers to teach in a single room.
         return constraintFactory
-                .fromUniquePair(Lesson.class,
-                        Joiners.equal(Lesson::getTeacher))
+                .from(Lesson.class)
+                .join(Lesson.class,
+                        Joiners.equal(Lesson::getTeacher)
+                )
                 .filter((lesson1, lesson2) -> lesson1.getRoom() != lesson2.getRoom())
                 .penalize("Teacher room stability", HardSoftScore.ONE_SOFT);
     }
 
     private Constraint teacherTimeEfficiency(ConstraintFactory constraintFactory) {
-        // A teacher prefers to teach sequential lessons and dislikes gaps between lessons.
         return constraintFactory
                 .from(Lesson.class)
                 .join(Lesson.class, Joiners.equal(Lesson::getTeacher),
@@ -86,7 +86,6 @@ public class TimeTableConstraintProvider implements ConstraintProvider {
     }
 
     private Constraint studentGroupSubjectVariety(ConstraintFactory constraintFactory) {
-        // A student group dislikes sequential lessons on the same subject.
         return constraintFactory
                 .from(Lesson.class)
                 .join(Lesson.class,
