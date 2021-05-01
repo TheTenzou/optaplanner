@@ -1,7 +1,11 @@
 package ru.thetenzou.optaplanertests.model;
 
+import org.optaplanner.core.api.domain.entity.PlanningEntity;
+import org.optaplanner.core.api.domain.variable.PlanningVariable;
+
 import javax.persistence.*;
 
+@PlanningEntity
 @Entity
 public class Lesson {
 
@@ -13,8 +17,10 @@ public class Lesson {
     private String teacher;
     private String studentGroup;
 
+    @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
     @ManyToOne
     private TimeSlot timeSlot;
+    @PlanningVariable(valueRangeProviderRefs = "roomRange")
     @ManyToOne
     private Room room;
 
