@@ -17,7 +17,7 @@ public class Room {
     private Room() {
     }
 
-    private Room(String name) {
+    public Room(String name) {
         this.name = name;
     }
 

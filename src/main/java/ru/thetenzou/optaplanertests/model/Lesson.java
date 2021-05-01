@@ -19,7 +19,7 @@ public class Lesson {
 
     @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
     @ManyToOne
-    private TimeSlot timeSlot;
+    private Timeslot timeslot;
     @PlanningVariable(valueRangeProviderRefs = "roomRange")
     @ManyToOne
     private Room room;
@@ -53,12 +53,12 @@ public class Lesson {
         this.studentGroup = studentGroup;
     }
 
-    public TimeSlot getTimeSlot() {
-        return timeSlot;
+    public Timeslot getTimeslot() {
+        return timeslot;
     }
 
-    public void setTimeSlot(TimeSlot timeSlot) {
-        this.timeSlot = timeSlot;
+    public void setTimeslot(Timeslot timeSlot) {
+        this.timeslot = timeSlot;
     }
 
     public Room getRoom() {
@@ -76,7 +76,7 @@ public class Lesson {
                 ", subject='" + subject + '\'' +
                 ", teacher='" + teacher + '\'' +
                 ", studentGroup='" + studentGroup + '\'' +
-                ", timeSlot=" + timeSlot +
+                ", timeSlot=" + timeslot +
                 ", room=" + room +
                 '}';
     }

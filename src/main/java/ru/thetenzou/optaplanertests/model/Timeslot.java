@@ -8,7 +8,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 @Entity
-public class TimeSlot {
+public class Timeslot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,10 +18,10 @@ public class TimeSlot {
     private LocalTime startTime;
     private LocalTime endTime;
 
-    public TimeSlot() {
+    public Timeslot() {
     }
 
-    public TimeSlot(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
+    public Timeslot(DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime) {
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;

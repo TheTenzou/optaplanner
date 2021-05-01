@@ -12,7 +12,7 @@ import java.util.List;
 public class TimeTable {
 
     @ValueRangeProvider(id = "timeslotRange")
-    private List<TimeSlot> timeSlotList;
+    private List<Timeslot> timeslotList;
     @ValueRangeProvider(id = "roomRange")
     private List<Room> roomList;
     @PlanningEntityCollectionProperty
@@ -24,14 +24,14 @@ public class TimeTable {
     public TimeTable() {
     }
 
-    public TimeTable(List<TimeSlot> timeSlotList, List<Room> roomList, List<Lesson> lessonList) {
-        this.timeSlotList = timeSlotList;
+    public TimeTable(List<Timeslot> timeSlotList, List<Room> roomList, List<Lesson> lessonList) {
+        this.timeslotList = timeSlotList;
         this.roomList = roomList;
         this.lessonList = lessonList;
     }
 
-    public List<TimeSlot> getTimeSlotList() {
-        return timeSlotList;
+    public List<Timeslot> getTimeslotList() {
+        return timeslotList;
     }
 
     public List<Room> getRoomList() {
