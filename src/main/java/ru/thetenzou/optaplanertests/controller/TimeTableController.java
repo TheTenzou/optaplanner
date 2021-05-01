@@ -27,8 +27,9 @@ public class TimeTableController {
     @PostMapping("/solve")
     public void solve() {
         solverManager.solveAndListen(
-                1L,
-                (problemId) -> timeTableRepository.findById(problemId),
+                TimeTableRepository.SINGLETON_TIME_TABLE_ID,
+                timeTableRepository::findById,
+//                (problemId) -> timeTableRepository.findById(problemId),
                 timeTableRepository::save
         );
     }
