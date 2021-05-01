@@ -2,16 +2,16 @@ package ru.thetenzou.optaplanertests.model;
 
 import java.util.List;
 
-public class TImeTable {
+public class TimeTable {
 
     private List<TimeSlot> timeSlotList;
     private List<Room> roomList;
     private List<Lesson> lessonList;
 
-    public TImeTable() {
+    public TimeTable() {
     }
 
-    public TImeTable(List<TimeSlot> timeSlotList, List<Room> roomList, List<Lesson> lessonList) {
+    public TimeTable(List<TimeSlot> timeSlotList, List<Room> roomList, List<Lesson> lessonList) {
         this.timeSlotList = timeSlotList;
         this.roomList = roomList;
         this.lessonList = lessonList;
