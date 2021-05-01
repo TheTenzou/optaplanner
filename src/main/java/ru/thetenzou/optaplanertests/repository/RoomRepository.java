@@ -1,7 +1,7 @@
-package ru.thetenzou.optaplanertests.persistence;
+package ru.thetenzou.optaplanertests.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
-import ru.thetenzou.optaplanertests.domain.Room;
+import ru.thetenzou.optaplanertests.model.Room;
 
 import java.util.List;
 

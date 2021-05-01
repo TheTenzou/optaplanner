@@ -1,4 +1,4 @@
-package ru.thetenzou.optaplanertests.domain;
+package ru.thetenzou.optaplanertests.model;
 
 import java.util.List;
 
